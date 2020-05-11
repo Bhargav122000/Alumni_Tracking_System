@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create profile - phase1</title>
+        <link rel="stylesheet" href="{% static 'phase1/in_style.css' %}">
+    </head>
+    <body>
+        <div class="login-wrap">
+            <div class="login-html">
+                <div class="login-form">
+                    <h3>hii {{user.first_name}} :)</h3>
+                    <blockquote>
+                        <i>
+                            Profile includes your Personal information, Educational information and Professional information.
+                        </i>
+                    </blockquote>
+                    <br>
+                    <br>
+                    {% if not b1 %}
+                    <div class="group">
+                        <a href="create_personal_p1">
+                                <input type="button" value="create personal profile"  class="button">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if not b2 %}
+                    <div class="group">
+                        <a href="create_educational_p1">
+                                <input type="button" value="create educational profile"  class="button">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if not b3 %}
+                    <div class="group">
+                        <a href="create_professional_p1">
+                                <input type="button" value="create professional profile"  class="button">
+                        </a>
+                    </div>
+                    {% endif %}
+                    <br>
+                    <br>
+                    <a href="profile_p1" alt=""><input type="button" class="view_button" value="go back to profile page"></a>
+                    <br>
+                    <br>
+                    <a href="view_profile_p1" alt=""><input type="button" class="view_button" value="view profile"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

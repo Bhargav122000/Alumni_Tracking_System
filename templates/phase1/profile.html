@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Profile - phase1</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+  <link rel="stylesheet" type="text/css" href="{% static 'phase1/style.css' %}" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <h2><a href="home_p1">Alumni Tracking System</a></h2>
+        <h3><i>Helloo {{user.username}}</i></h3>
+        <div class="slogan" style="float: left; padding-left: 25px;text-align: left; font: 500% 'tangerine', arial; color: whitesmoke;">#Alumni Forever!!</div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="home_p1">Home</a></li>
+          <li class="current"><a href="profile_p1">Profile</a></li>
+          <li><a href="events_p1">Events</a></li>
+          <li><a href="messaging_p1">Messaging</a></li>
+          <li><a href="logout_p1">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="sidebar_container">
+        <img class="paperclip" src="{% static 'phase1/paperclip.png' %}" alt="paperclip" />
+        <div class="sidebar">
+          <br>
+          <h2>Today :</h2>
+          <span style="font-size: 20px;font-family:cursive;color:royalblue;">
+            {{day}}-{{month}}
+            <br>
+            #{{year}}!!{{week}}
+          </span>
+        </div>
+        <img class="paperclip" src="{% static 'phase1/paperclip.png' %}" alt="paperclip" />
+        <div class="sidebar">
+          <h3>Latest News</h3>
+          <p>Click on the below links in order to go through the latest news in various fields</p>
+          <ul>
+            <li><a href="news_technology_p1">Technology news</a></li>
+            <li><a href="news_science_p1">Science news</a></li>
+            <li><a href="news_business_p1">Business news</a></li>
+            <li><a href="news_general_p1">General news</a></li>
+            <li><a href="news_entertainment_p1">Entertainment news</a></li>
+            <li><a href="news_sports_p1">Sports news</a></li>
+          </ul>
+        </div>
+        <img class="paperclip" src="{% static 'phase1/paperclip.png' %}" alt="paperclip" />
+        <div class="sidebar">
+          <h3>History of {{month}}</h3>
+          <ul>
+            <li>{{desc1}}</li>
+            {% if desc2 != "" %}
+            <li>{{desc2}}</li>
+            {% endif %}
+          </ul>
+          <h4>On this day in Tech history</h4>
+          <a href="{{link}}" alt="#">click to know!!</a>
+        </div>
+      </div>
+      <div id="content">
+        <h2>Welcome to your Profile page !!</h2>
+        <blockquote>
+          <ul>
+            <li>You can create your profile</li>
+            <li>You can update/edit your profile it is already created</li>
+            <li>You can view your profile</li>
+            <li>You can also send a request to your Institution of High Education for merging profile-
+                <ul>
+                  <li>If the Institution accepts your request, then your profile will be merged successfully</li>
+                  <li>If the Institution rejects your request, then your profile will not be merged</li>
+                </ul>
+          </ul>
+          <h4><u>Profile includes:</u></h4>
+          <ul>
+            <li>Personal Profile</li>
+            <li>Educational Profile (Secondary,Higher Secondary,Higher)</li>
+            <li>Professional Profile</li>
+          </ul>
+        </blockquote>
+        <br>
+        <h4><u>Options for you :</u></h4>  
+        <ul>
+          {% if b_create %}
+          <li>
+            Create Profile >><a href="create_profile_p1" alt="">goo!</a>
+          </li>
+          {% endif %}
+          {% if b_view %}
+          <li>
+            View Profile >><a href="view_profile_p1" alt="">goo!</a>
+          </li>
+          {% endif %}
+          {% if b_edit %}
+          <li>
+            Edit Profile >><a href="edit_profile_p1" alt="">goo!</a>
+          </li>
+          {% endif %}
+          {% if b_merge %}
+          <li>
+            Request for merging Profile >><a href="merge_p1" alt="">goo!</a>
+          </li>
+          {% endif %}
+        </ul>
+    </div>
+    <!--<div id="footer">
+      <p>Copyright &copy; simplestyle_8 | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">design from HTML5webtemplates.co.uk</a></p>
+    </div>-->
+  </div>
+</body>
+</html>

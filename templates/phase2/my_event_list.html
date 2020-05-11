@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html> 
+<html lang="en" dir="ltr"> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>My Events - phase2</title> 
+    <link rel="stylesheet" href="{% static 'phase1/in_style.css' %}">
+</head> 
+<body class="view_body" style="background-repeat: repeat;"> 
+    <br>
+        <div class="h" style="color:orange;">
+            Welcome .... {{user.username}}
+            <a href="events_p2" ><input type="button" value="back to events page" style="border-radius: 10px;background-color: chocolate;font-family: cursive;font-size: 15px;padding-left: 10px;padding-right:10px;margin-left:100px;position: relative;"></a>
+            <br>
+            Events by uu!
+        </div>
+    <br>
+    <div class="view_div">
+    {% for event in events %} 
+        <div style="border : 5px ridge red;color:rgb(255, 255, 102);font-family:cursive;width:940px;height:470px;">
+            <img src="{{event.attachment.url}}" width="460" height="460" style="float:right;">
+            <p><u>Title :</u> <i>{{event.title}}</i></p>
+            <p><u>Venue :</u> <i>{{event.venue}}</i></p>
+            <p><u>Date&Time :</u> <i>{{event.date_time}}</i></p>
+            <p><u>About event :</u>
+            <textarea rows=9 cols=60 style="border-radius:10px;font-style:italic;" readonly>{{event.description}}</textarea>
+            </p>
+            <p><u>Invited Alumni :</u>
+            <textarea rows=3 cols=60 style="border-radius:10px;font-style:italic;" readonly>{{event.to_alumni}}</textarea>
+            </p>
+            <p><u>Invited Institutions :</u>
+            <textarea rows=3 cols=60 style="border-radius:10px;font-style:italic;" readonly>{{event.to_inst}}</textarea>
+            </p>
+        </div>
+        <br>
+	{% endfor %} 
+    </div>
+</body> 
+</html> 

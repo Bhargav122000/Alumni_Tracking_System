@@ -1,0 +1,254 @@
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'phase1/in_style.css' %}">
+    <title>Edit Education Profile - phase1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#engg").click(function(){
+                var select1 = "<select id='inst_engg_branch' name='inst_engg_branch' required>";
+                var select2 = "</select>";
+                $("#branch").empty();
+                select1 = select1.concat("<option value='Civil'>Civil</option>");
+                select1 = select1.concat("<option value='Mechanical'>Mechanical</option>");
+                select1 = select1.concat("<option value='Electrical'>Electrical</option>");
+                select1 = select1.concat("<option value='Electrical and Electronics'>Electrical and Electronics</option>");
+                select1 = select1.concat("<option value='Electronics and Communication'>Electronics and Communication</option>");
+                select1 = select1.concat("<option value='Computer Science'>Computer Science</option>");
+                select1 = select1.concat("<option value='Biotechnology'>biotechnology</option>");
+                select1 = select1.concat("<option value='Electronics and Instrumentation'>Electronics and Instrumentation</option>");
+                select1 = select1.concat("<option value='Information Technology'>Information Technology</option>");
+                select1 = select1.concat("<option value='Automobile'>Automobile</option>");
+                select1 = select1.concat("<option value='Aeronautical'>Aeronauticle</option>");
+                select1 = select1.concat("<option value='Architectural'>Architectural</option>");
+                select1 = select1.concat("<option value='Agricultural'>Agricultural</option>");
+                select1 = select1.concat("<option value='Petroleum'>Petroleum</option>");
+                select1 = select1.concat("<option value='Food Technology'>Food Technology</option>");
+                select1 = select1.concat("<option value='Textile'>Textile</option>");
+                select1 = select1.concat("<option value='Chemical'>Chemical</option>");
+                select1 = select1.concat("<option value='Biochemical'>Biochemical</option>");
+                select1 = select1.concat("<option value='Aerospace'>Aerospace</option>");
+                select1 = select1.concat("<option value='Industrial'>Industrial</option>");
+                select1 = select1.concat("<option value='Manufacturing'>Manufacturing</option>");
+                select1 = select1.concat("<option value='Material'>Material</option>");
+                select1 = select1.concat("<option value='Mechatronics'>Mechatronics</option>");
+                select1 = select1.concat("<option value='Genetic'>Genetic</option>");
+                select1 = select1.concat("<option value='Ocean and Marine'>Ocean and Marine</option>");
+                select1 = select1.concat("<option value='Mining'>Mining</option>");
+                select1 = select1.concat("<option value='Other'>Other</option>");
+                select1 = select1.concat(select2);
+                $("#branch").append(select1); 
+            });
+  
+            $("#medi").click(function(){
+                var select1 = "<select id='inst_medi_branch' name='inst_medi_branch' required>";
+                var select2 = "</select>";
+                select1 = select1.concat("<option value='MBBS'>MBBS</option>"); 
+                select1 = select1.concat("<option value='BDS'>BDS</option>");
+                select1 = select1.concat("<option value='BHMS'>BHMS</option>");
+                select1 = select1.concat("<option value='BAMS'>BAMS</option>");
+                select1 = select1.concat("<option value='DHMS'>DHMS</option>");
+                select1 = select1.concat("<option value='BUMS'>BUMS</option>");
+                select1 = select1.concat("<option value='B.V.Sc and AH'>B.V.Sc and AH</option>");
+                select1 = select1.concat("<option value='B.Pharm'>B.Pharm</option>");
+                select1 = select1.concat("<option value='D.Pharma'>D.Pharma</option>");
+                select1 = select1.concat("<option value='BOT'>BOT</option>");
+                select1 = select1.concat("<option value='BMLT'>BMLT</option>");
+                select1 = select1.concat("<option value='BPT'>BPT</option>");
+                select1 = select1.concat("<option value='B.Sc.Nursing'>B.Sc.Nursing</option>");
+                select1 = select1.concat("<option value='BNYS'>BNYS</option>");
+                select1 = select1.concat("<option value='Other'>Other</option>");
+                select1 = select1.concat(select2);
+                $("#branch").empty();
+ 				
+                $("#branch").append(select1);           
+             });
+
+             $("#other").click(function(){
+                var select1 = "<select id='inst_branch' name='inst_other_branch' required>";
+                var select2 = "</select>";
+                select1 = select1.concat("<option value='Other'>Other</option>");
+                select1 = select1.concat(select2);
+                $("#branch").empty();
+                $("#branch").append(select1);
+             });
+        });
+</script>
+</head>
+<body >
+    <form action="edit_educational_p1" method="POST">
+        {% csrf_token %}
+    <label>{{user.username}}'s account</label>
+    <div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sec" checked><label for="tab-1" class="tab">#sec</label>
+		<input id="tab-2" type="radio" name="tab" class="hsec"><label for="tab-2" class="tab">#high sec</label>
+        <input id="tab-3" type="radio" name="tab" class="high"><label for="tab-3" class="tab">#high</label>
+		<div class="login-form">
+			<div class="sec-htm">
+				<h2><i>Secondary Education Info</i></h2>
+                <div class="group">
+                    <label for="school_name" class="label">Name of School :</label>
+                    <input type="text" id="school_name" value="{{obj1.name}}" class="input" name="school_name" pattern="^[a-zA-Z ]*$" required>
+                </div>
+                <div class="group">
+                    <label for="school_join" class="label">Year of Joining :</label>
+                    <input type="number" id="school_join" value="{{obj1.year_join}}" class="input" name="school_join" min=1900 max=2300 required>
+                </div>
+                <div class="group">
+                    <label for="school_pass" class="label">Year of Passing :</label>
+                    <input type="number" id="school_pass" value="{{obj1.year_pass}}" class="input" name="school_pass" min=1900 max=2300 required>
+                </div>
+                <div class="group">
+                    <label for="school_score" class="label">Score (percentage) :</label>
+                    <input type="number" id="school_score" value="{{obj1.score}}" class="input" name="school_score" min=0 max=100 required>
+                </div>
+                <div class="group">
+                <label for="school_state" class="label">State :</label>
+                <select id="school_state" name="school_state" required>
+                    {% for state in states %}
+                    {% if obj1.state == state %}<option value="{{state}}" selected>{{state}}</option>
+                    {% else %}<option value="{{state}}">{{state}}</option>{% endif %}
+                    {% endfor %}
+                </select>
+                </div>
+                <div class="group">
+                    <label for="school_place" class="label">City/Town/Village :</label>
+                    <input type="text" id="school_place" value="{{obj1.place}}" class="input" name="school_place" pattern="^[a-zA-Z ]*$" required>
+                </div>
+                <div class="group">
+                    <a href="edit_profile_p1" alt=""><input type="button" class="view_button" value="back to edit profile"></a>
+                </div>
+			</div>
+			<div class="hsec-htm">
+				<h2><i>Higher Secondary Education Info</i></h2>
+                <div class="group">
+                    <label for="college_name" class="label">Name of College :</label>
+                    <input type="text" id="college_name" value="{{obj2.name}}" class="input" name="college_name" pattern="^[a-zA-Z ]*$" required>
+                </div>
+                <div class="group">
+                    <label for="college_branch" class="label">Branch (ex: MPC,BiPC,..)</label>
+                    <input type="text" id="college_branch" value="{{obj2.branch}}" class="input" name="college_branch" patterb="^[a-zA-z. ]*$" required>
+                </div>
+                <div class="group">
+                    <label for="college_join" class="label">Year of Joining :</label>
+                    <input type="number" id="college_join" value="{{obj2.year_join}}" class="input" name="college_join" min=1900 max=2300 required>
+                </div>
+                <div class="group">
+                    <label for="college_pass" class="label">Year of Passing :</label>
+                    <input type="number" id="college_pass" value="{{obj2.year_pass}}" class="input" name="college_pass" min=1900 max=2300 required>
+                </div>
+                <div class="group">
+                    <label for="college_score" class="label">Score (percentage) :</label>
+                    <input type="number" id="college_score" value="{{obj2.score}}" class="input" name="college_score" min=0 max=100 required>
+                </div>
+                <div class="group">
+                <label for="college_state" class="label">State :</label>
+                <select id="college_state" name="college_state" required>
+                    {% for state in states %}
+                    {% if obj2.state == state %}<option value="{{state}}" selected>{{state}}</option>
+                    {% else %}<option value="{{state}}">{{state}}</option>{% endif %}
+                    {% endfor %}
+                </select>
+                </div>
+                <div class="group">
+                    <label for="college_place" class="label">City/Town/Village :</label>
+                    <input type="text" id="college_place" value="{{obj2.place}}" class="input" name="college_place" pattern="^[a-zA-Z ]*$" required>
+                </div>
+                <div class="group">
+                    <a href="edit_profile_p1" alt=""><input type="button" class="view_button" value="back to edit profile"></a>
+                </div>
+			</div>
+            <div class="high-htm">
+                <h2><i>Higher Education Info</i></h2>
+                <div class="group">
+                    <label for="inst_name" class="label">Name of College :</label>
+                    <input type="text" id="inst_name" value="{{obj3.name}}" class="input" name="inst_name" pattern="^[a-zA-Z. ]*$" required>
+                </div>
+                <div class="group">
+                    <label class="label">Field :</label>
+                    
+                    {% if obj3.field == 'Engineering' %}
+                    <input type="radio" id="engg" name="inst_field" value="Engineering" checked required>
+                    {% else %}
+                    <input type="radio" id="engg" name="inst_field" value="Engineering" required>
+                    {% endif %}
+                    <label for="engg" >Engineering</label>
+                    
+                    {% if obj3.field == 'Medical' %}
+                    <input type="radio" id="medi" name="inst_field" value="Medical" checked required>
+                    {% else %}
+                    <input type="radio" id="medi" name="inst_field" value="Medical" required>
+                    {% endif %}
+                    <label for="medi" >Medical</label>
+                    
+                    {% if obj3.field == 'Other' %}
+                    <input type="radio" id="other" name="inst_field" value="Other" checked required>
+                    {% else %}
+                    <input type="radio" id="other" name="inst_field" value="Other" required>
+                    {% endif %}
+                    <label for="other" >Other</label>
+                </div>
+                <div class="group">
+                    <label class="label">Institutuon :</label>
+
+                    {% if obj3.ofType == 'College' %}
+                    <input type="radio" id="clg" name="inst_type" value="College" checked required>
+                    {% else %}
+                    <input type="radio" id="clg" name="inst_type" value="College" required>
+                    {% endif %}
+                    <label for="clg" >College</label>
+                    
+                    {% if obj3.ofType == 'University' %}
+                    <input type="radio" id="uni" name="inst_type" value="University" checked required>
+                    {% else %}
+                    <input type="radio" id="uni" name="inst_type" value="University" required>
+                    {% endif %}
+                    <label for="uni" >University</label>
+                </div>
+                <div class="group">
+                    <label class="label">Branch/Department</label>
+                    <div id="branch">
+                        
+                    </div>
+                </div>
+                <div class="group">
+                    <label for="inst_join" class="label">Year of Joining :</label>
+                    <input type="number" id="inst_join" value="{{obj3.year_join}}" class="input" name="inst_join" min=1900 max=2300 required>
+                </div>
+                <div class="group">
+                    <label for="inst_pass" class="label">Year of Passing :</label>
+                    <input type="number" id="inst_pass" value="{{obj3.year_pass}}" class="input" name="inst_pass" min=1900 max=2300 required>
+                </div>
+                <div class="group">
+                    <label for="inst_score" class="label">Score (percentage) :</label>
+                    <input type="number" id="inst_score" value="{{obj3.score}}" class="input" name="inst_score" min=0 max=100 required>
+                </div>
+                <div class="group">
+                <label for="inst_state" class="label">State :</label>
+                <select id="inst_state" name="inst_state" required>
+                    {% for state in states %}
+                    {% if obj3.state == state %}<option value="{{state}}" selected>{{state}}</option>
+                    {% else %}<option value="{{state}}">{{state}}</option>{% endif %}
+                    {% endfor %}
+                </select>
+                </div>
+                <div class="group">
+                    <label for="inst_place" class="label">City/Town/Village :</label>
+                    <input type="text" id="inst_place" value="{{obj3.place}}" class="input" name="inst_place" pattern="^[a-zA-Z ]*$" required>
+                </div>
+                <div class="group">
+                    <input type="submit" class="button">
+                </div>
+                <div class="group">
+                    <a href="edit_profile_p1" alt=""><input type="button" class="view_button" value="back to edit profile"></a>
+                </div>
+            </div>
+		</div>
+	</div>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Home - phase2</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+  <link rel="stylesheet" type="text/css" href="{% static 'phase2/style.css' %}" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <h2><a href="home_p2">Alumni Tracking System</a></h2>
+        <h3><i>Helloo {{user.username}}</i></h3>
+        <div class="slogan" style="float: left; padding-left: 25px;text-align: left; font: 500% 'tangerine', arial; color: brown">#Alumni Forever!!</div>
+        <a href="remove_p2"><input type="button" value="remove my account" style='border-radius:10px;background-color:rgb(255,102,102);font-family:cursive;font-size:15px;margin-left:1000px;'></a>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="current"><a href="home_p2">Home</a></li>
+          <li><a href="alumni_p2">Alumni</a></li>
+          <li><a href="events_p2">Events</a></li>
+          <li><a href="messaging_p2">Messaging</a></li>
+          <li><a href="logout_p2">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content" style="background-color: rgb(217, 217, 217);color:black;">
+      <div id="sidebar_container">
+        <img class="paperclip" src="{% static 'phase2/paperclip.png' %}" alt="paperclip" />
+        <div class="sidebar">
+        <br>
+        <h2>Today :</h2>
+        <span style="font-size: 20px;font-family:cursive;color:royalblue;">
+          {{day}}-{{month}}
+          <br>
+          #{{year}}!!{{week}}
+        </span>
+        </div>
+        <img class="paperclip" src="{% static 'phase2/paperclip.png' %}" alt="paperclip" />
+        <div class="sidebar">
+          <br>
+          <h2>Latest News</h2>
+          <p>Click on the below links in order to go through the latest news in various fields</p>
+          <ul>
+            <li><a href="news_technology_p2">Technology news</a></li>
+            <li><a href="news_science_p2">Science news</a></li>
+            <li><a href="news_business_p2">Business news</a></li>
+            <li><a href="news_general_p2">General news</a></li>
+            <li><a href="news_entertainment_p2">Entertainment news</a></li>
+            <li><a href="news_sports_p2">Sports news</a></li>
+          </ul>
+        </div>
+        <img class="paperclip" src="{% static 'phase2/paperclip.png' %}" alt="paperclip" />
+        <div class="sidebar">
+          <br>
+          <h2>History of {{month}}</h2>
+          <ul>
+            <li>{{desc1}}</li>
+            {% if desc2 != "" %}
+            <li>{{desc2}}</li>
+            {% endif %}
+          </ul>
+          <h4>On this day in Tech history</h4>
+          <a href="{{link}}" alt="#">click to know!!</a>
+        </div>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h2>Welcome to the -  <i>Alumni Tracking System</i></h2>
+        <blockquote>
+          Our website is helpful in order to maintain to a dynamic and updated central platform for the tracking of alumni.
+        </blockquote>
+        <p>
+          In current scenario, the database of Alumni is maintained by college which is static. 
+          Due to this reason, the real time information of alumni is not present on any central platform.
+          A platform must exist where all the alumni can easily update their profile, have persistent storage of student data and can be easily accessed by college.
+        </p>
+        <p>
+          <h4><u>Our website provides following facilities:</u></h4>
+          <ul>
+            <li>Provision for Users(both Alumni members & Institutions) to register and login.</li>
+            <li>Provision for Alumni members to create , view their profile(personal, educational, professional) and update if necessary.</li>
+            <li>Provision for alumni members to save their profile on central platform(where respective institutions can track them).</li>
+            <li>Provision for Institutions to view their alumni, (view as a whole, or by some criteria).</li>
+            <li>Communication facility between alumni and institutions by messaging through mails.</li>
+            <li>Create events on the portal.</li>
+          </ul>
+        </p>
+        <p><h4><u>You can navigate to following pages :</u></h4>
+        <ul>
+          <li><a href="alumni_p2">Alumni</a></li>
+          <li><a href="events_p2">Events</a></li>
+          <li><a href="messaging_p2">Messaging</a></li>
+        </ul>
+        </p>
+      </div>
+    </div>
+    <!--<div id="footer">
+      <p>Copyright &copy; simplestyle_7 | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Website templates</a></p>
+    </div>-->
+  </div>
+</body>
+</html>

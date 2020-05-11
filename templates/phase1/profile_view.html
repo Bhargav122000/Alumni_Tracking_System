@@ -1,0 +1,52 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>View profile - phase1</title>
+        <link rel="stylesheet" href="{% static 'phase1/in_style.css' %}">
+    </head>
+    <body class="view_body" style="background-repeat: repeat;">
+        <br>
+        <div class="h">
+            Welcome .... {{user.username}}
+            <a href="profile_p1" ><input type="button" class="view_button1" value="go back to profile page"></a>
+            <a href="edit_profile_p1" ><input type="button" class="view_button2" value="update profile"></a>
+        </div>
+        <br>
+        <div class="view_div">
+            {% if b1 %}
+            <div class="view_personal">
+                <div class="h">Personal Profile</div>
+                <textarea class="view_area" rows=5 cols=70 disabled>  
+                You are the sweet {% if obj1.gender == 'male' %}son{% elif obj1.gender == 'female' %}daughter{% else %}son/daughter{% endif %} of your parents {{obj1.mother_name}},{{obj1.father_name}}.
+                Your Date of Birth is {{obj1.dob}}.
+                Your native place is {{obj1.place}} located in the state {{obj1.state}}. 
+                </textarea>
+            </div>
+            {% endif %}
+            <br>
+            {% if b2 %}
+            <div class="view_educational">
+                <div class="h">Educational Profile</div>
+                <textarea class="view_area" rows=10 cols=70 disabled>  
+                Completed the secondary education in {{obj2.name}}, located in {{obj2.place}},{{obj2.state}} ,in the year {{obj2.year_pass}} with a score of {{obj2.score}}%.
+                Higher secondary education (course-{{obj3.branch}}) is done at {{obj3.name}}, located in {{obj3.place}},{{obj3.state}} , in the year {{obj3.year_pass}} with a score of {{obj3.score}}% .
+                Pursued degree by completing the Higher education in {{obj4.name}} (branch - {{obj4.branch}}), located in {{obj4.place}},{{obj4.state}} , in the year {{obj4.year_pass}} with a score of {{obj4.score}}%. 
+                </textarea>
+            </div>
+            {% endif %}
+            <br>
+            {% if b3 %}
+            <div class="view_professional">
+                <div class="h">Professional Profile</div>
+                <textarea class="view_area" rows=6 cols=70 disabled>  
+                Presently working as a {{obj5.role}}, in {{obj5.name}} located in {{obj5.place}},{{obj5.state}}.
+                Joined in the year {{obj5.year_join}}
+                Previous working info - {{obj5.previous}}
+                </textarea>
+            </div>
+            {% endif %}
+        </div>
+    </body>
+
+</html>

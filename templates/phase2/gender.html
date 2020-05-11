@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gender - phase2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'phase2/in_style.css' %}">
+</head>
+<body class="view_body" style="background-repeat: repeat;">
+    <h3>Alumni List of your Institution - based on Gender</h3>
+    <a href="alumni_p2" ><input type="button" class="view_button2" value="go back to alumni page"></a>
+    <br>
+    <div>
+    <form action="gender_p2" method='POST'>
+        {% csrf_token %}
+        <label>Gender :</label>
+        <br>
+        {% if gender == 'male' %}
+            <input type="radio" name="gender" value="male" checked required>
+        {% else %}
+            <input type="radio" name="gender" value="male" required>
+        {% endif %}
+        <label>Male</label>
+        {% if gender == 'female' %}
+            <input type="radio" name="gender" value="female" checked required>
+        {% else %}
+            <input type="radio" name="gender" value="female" required>
+        {% endif %}
+        <label>Female</label>
+        {% if gender == 'other' %}
+            <input type="radio" name="gender" value="other" checked required>
+        {% else %}
+            <input type="radio" name="gender" value="other" required>
+        {% endif %}
+        <label>Other</label>
+        <br><br>
+        <input type="submit">
+    </form>
+    </div>
+    {% if b == 'out' %}
+        <div>
+            <br>
+            # Alumni members : {{count}}
+            <br>
+            <hr> 
+            <div>
+                {% for obj in objs %}
+                <div style="border:5px ridge rgb(255, 51, 51);padding:7px;width:750px;height:auto;">
+                    <input type='text' value='{{obj.person_name}}' readonly style='border-radius:10px;background-color:chocolate;font-family:cursive;font-size:15px;'>
+                    <br><br>
+                    Contact #:<input type='text' value='{{obj.person_phone}}' readonly style='border-radius:10px;background-color:chocolate;font-family:cursive;font-size:15px;'>
+                    &nbsp;
+                    Email id :<input type='text' value='{{obj.person_email}}' readonly style='border-radius:10px;background-color:chocolate;font-family:cursive;font-size:15px;'>
+                    <br><br>
+                    Branch:<input type='text' value='{{obj.institution_branch}}' readonly style='border-radius:10px;background-color:chocolate;font-family:cursive;font-size:15px;'>
+                    &nbsp;
+                    Year of Passing:<input type='text' value='{{obj.institution_year_pass}}' readonly style='border-radius:10px;background-color:chocolate;font-family:cursive;font-size:15px;'>
+                    <br><br>
+                    Job :
+                    <textarea rows=5 cols=50 readonly style='text-align:justify;border-radius:10px;background-color:chocolate;font-family:cursive;font-size:15px;'>
+                        {{obj.company_role}} in a {{obj.company_name}}, joined in {{obj.company_year_join}}
+                        previously : {{obj.company_previous}}
+                    </textarea>
+                    <br>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</body>
+</html>

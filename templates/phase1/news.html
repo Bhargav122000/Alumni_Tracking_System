@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html> 
+<html lang="en" dir="ltr"> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>{{name}} news- phase1</title> 
+    <link rel="stylesheet" href="{% static 'phase1/in_style.css' %}">
+</head> 
+<body class="view_body" style="background-repeat: repeat;"> 
+    <br>
+        <div class="h" style="color:orange;">
+            Welcome .... {{user.username}}
+            <a href="home_p1" ><input type="button" value="back to home page" style="border-radius: 10px;background-color: chocolate;font-family: cursive;font-size: 15px;padding-left: 10px;padding-right:10px;margin-left:100px;position: relative;"></a>
+            <br>
+            {{name}} >> news for uu!
+        </div>
+    <br>
+    <div class="view_div">
+    {% for name, description, url in mylist %} 
+        <div style="padding:5px;text-align:left;border : 5px ridge red;color:rgb(255, 255, 102);font-family:cursive;width:800px;height:auto;">
+        {{ name }} 
+        <br>
+        <br>
+        <span style="font-size:20px;">In detail:</span>{{ description }} 
+        <br> 
+        <br>
+        <a href="{{url}}" style="color: white;">click for more Info</a>
+        </div>
+        <br>
+	{% endfor %} 
+    </div>
+</body> 
+</html> 

@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit profile - phase1</title>
+        <link rel="stylesheet" href="{% static 'phase1/in_style.css' %}">
+    </head>
+    <body>
+        <div class="login-wrap">
+            <div class="login-html">
+                <div class="login-form">
+                    <h3>hii {{user.username}}</h3>
+                    <blockquote>
+                        <i>
+                            These are your options >>
+                        </i>
+                    </blockquote>
+                    <br>
+                    <br>
+                    {% if b1 %}
+                    <div class="group">
+                        <a href="edit_personal_p1">
+                                <input type="button" value="edit personal profile"  class="button">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if b2 %}
+                    <div class="group">
+                        <a href="edit_educational_p1">
+                                <input type="button" value="edit educational profile"  class="button">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if b3 %}
+                    <div class="group">
+                        <a href="edit_professional_p1">
+                                <input type="button" value="edit professional profile"  class="button">
+                        </a>
+                    </div>
+                    {% endif %}
+                    <br>
+                    <br>
+                    <a href="profile_p1" alt=""><input type="button" class="view_button" value="go back to profile page"></a>
+                    <br>
+                    <br>
+                    {% if b1 or b2 or b3 %}
+                    <a href="view_profile_p1" alt=""><input type="button" class="view_button" value="view profile"></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

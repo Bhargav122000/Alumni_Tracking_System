@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Professional profile - phase1</title>
+        <link rel="stylesheet" href="{% static 'phase1/in_style.css' %}">
+    </head>
+    <body>
+        <form action="edit_professional_p1" method="POST">
+            {% csrf_token %}
+            <label>{{user.username}}'s account</label>
+            <div class="login-wrap">
+            <div class="login-html">
+            <div class="login-form">
+                <h2><i>Professional Info</i></h2>
+                <div class="group">
+                    <label for="pro_name" class="label">Name of Company/Organisation :</label>
+                    <input type="text" id="pro_name" value="{{obj.name}}" class="input" name="pro_name" pattern="^[a-zA-Z0-9 ]*$" required>
+                </div>
+                <div class="group">
+                    <label for="pro_role" class="label">Position/Role :</label>
+                    <input type="text" id="pro_role" value="{{obj.role}}" class="input" name="pro_role" pattern="^[a-zA-Z ]*$" required>
+                </div>
+                <div class="group">
+                    <label for="pro_join" class="label">Year of Joining :</label>
+                    <input type="number" id="pro_join" value="{{obj.year_join}}" class="input" name="pro_join" min=1900 max=2300 required>
+                </div>
+                <div class="group">
+                <label for="pro_state" class="label">State :</label>
+                <select id="pro_state" name="pro_state" required>
+                    {% for state in states %}
+                    {% if obj.state == state %}<option value="{{state}}" selected>{{state}}</option>
+                    {% else %}<option value="{{state}}">{{state}}</option>{% endif %}
+                    {% endfor %}
+                </select>
+                </div>
+                <div class="group">
+                    <label for="pro_place" class="label">City/Town/Village :</label>
+                    <input type="text" id="pro_place" value="{{obj.place}}" class="input" name="pro_place" pattern="^[a-zA-Z ]*$" required>
+                </div>
+                <div class="group">
+                    <label for="pro_previous" class="label">Previous Profession details :</label>
+                    <textarea id="pro_previous" name="pro_previous" rows="5" cols="50" style="border-radius:20px;">
+                    {{obj.previous}}
+                    </textarea>
+                </div>
+                <div class="group">
+                    <input type="submit" class="button">
+                </div>
+                <div class="group">
+                    <a href="edit_profile_p1" alt=""><input type="button" class="view_button" value="back to edit profile"></a>
+                </div>
+            </div>
+            </div>
+            </div>
+        </form>
+    </body>
+</html>
